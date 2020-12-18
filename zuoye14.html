@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+	}
+	ul {
+		list-style-type: none;
+	}
+	.clear::after {
+		content: '';
+		display: block;
+		height: 0;
+		clear: both;
+	}
+	body {
+		line-height: 1;
+		background: rgb(148, 60, 144);
+	}
+	img {
+		vertical-align: bottom;
+	}
+	.container {
+		width: 1202px;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.header-top {
+		height: 32px;
+		border-bottom: 1px solid rgb(75, 0, 130);
+	}
+	.header__info {
+		line-height: 32px;
+	}
+	.header__info li {
+		float: left;
+		margin-left: 27px;
+		background: no-repeat left center;
+	}
+	.fl {
+		float: left;
+	}
+	.fr {
+		float: right;
+	}
+	li.iphone {
+		padding-left: 15px;
+	}
+	li.weixin {
+		padding-left: 23px;
+	}
+	.header-bottom {
+		height: 100px;
+	}
+	.logo {
+		width: 236px;
+		height: 70px;
+		margin-top: 14px;
+	}
+	.nav {
+		margin-top: 39px;
+	}
+	.nav li {
+		float: left;
+		padding: 0 44px;
+		border-right: 2px solid rgb(75, 0, 130);
+	}
+	li.first {
+		padding-left: 20px;
+	}
+	li.last {
+		border: none;
+		padding-right: 20px;
+	}
+	.nav a {
+		font-size: 16px;
+		font-weight: bold;
+		color: rgb(75, 0, 130);
+	}
+	.form {
+		margin-top: 34px;
+	}
+	.form * {
+		float: left;
+	}
+	.form .search {
+		width: 147px;
+		height: 11px;
+		border: 1px solid rgba(208, 61, 61, 1);
+		padding: 9px;
+	}
+	.form .submit {
+		width: 31px;
+		height: 31px;
+		border: 1px solid rgba(208, 61, 61, 1);
+		background: rgba(208, 61, 61, 1) url(photo/search.png) no-repeat center center;
+		cursor: pointer;
+	}
+	.banner {
+		height: 550px;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+	}
+	#box{
+		width: 1900px;
+		height: 550px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		overflow: hidden;
+	}
+	#box #con{
+		width: 6000px;
+		height: 550px;
+		overflow: hidden;
+	}
+	#con img{
+		float: left;
+		width: 600px;
+		height: 550px;
+	}
+	#btnL{
+		position: absolute;
+		left: 0px;
+		top: 366px;
+		width: 36px;
+		height: 36px;
+		background: url(images/btnL.png) 0 0 no-repeat;
+		cursor: pointer;
+	}
+	#btnR{
+		position: absolute;
+		right: 0px;
+		top: 366px;
+		width: 36px;
+		height: 36px;
+		background: url(images/btnR.png) 0 0 no-repeat;
+		cursor: pointer;
+	}
+	#num{
+		position: absolute;
+		bottom: 10px;
+		left: 148px;
+		overflow: hidden;
+		list-style: none;
+	}
+	#num li{
+		float: left;
+		margin:0 5px;
+		font-size: 16px;
+		line-height: 25px;
+		height: 25px;
+		width: 25px;
+		background: #ccc;
+		text-align: center;
+		cursor: pointer;
+	}
+	#num li.select{
+		background-color:plum;
+		color: white;
+	}
+	.prev,
+	.next {
+		position: absolute;
+		top: 222px;
+		left: 6%;
+		width: 106px;
+		height: 106px;
+		opacity: 0.2;
+	}
+	.next {
+		left: auto;
+		right: 5%;
+	}
+	.title {
+		margin-top: 100px;
+		font-size: 36px;
+		color: rgba(32, 32, 32, 1);
+		background: no-repeat center center;
+	}
+	.title .small {
+		margin-top: 15px;
+		margin-bottom: 34px;
+		font-size: 20px;
+	}
+	.product-small {
+		width: 705px;
+	}
+	.product-item {
+		float: left;
+		position: relative;
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	.product-small.fl .product-item {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	.product-info {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 45px;
+		background: rgba(208, 61, 61, 1);
+		opacity: 0.8;
+		font-weight: bold;
+		color: rgba(255, 255, 255, 1);
+	}
+	.product-info h3 {
+		font-size: 14px;
+		padding: 7px 0;
+	}
+	.product-info p {
+		font-size: 12px;
+	}
+	.product-big .product-item {
+		margin-left: 0;
+	}
+	.product-big .product-info {
+		height: 58px;
+		font-size: 16px;
+	}
+	.product-big h3 {
+		font-size: 16px;
+		padding: 10px 0;
+	}
+	.product-big p {
+		font-size: 14px;
+	}
+	.member {
+		margin: 60px auto 40px;
+		width: 238px;
+		height: 64px;
+		line-height: 64px;
+		background: rgba(208, 61, 61, 1);
+		border-radius: 3px;
+		font-size: 24px;
+		font-weight: 400;
+		color: rgba(255, 255, 255, 1);
+	}
+	.server {
+		text-align: center;
+	}
+	.server ul {
+		display: inline-block;
+	}
+	.server li {
+		float: left;
+	}
+	.server-info {
+		height: 135px;
+		background: rgba(58, 58, 58, 0.8);
+	}
+	.server-info li {
+		font-size: 14px;
+		font-weight: 400;
+		color: rgba(255, 255, 255, 1);
+		padding: 18px 82px;
+	}
+	.server-info p {
+		padding-top: 15px;
+	}
+	.footer {
+		height: 207px;
+		padding-top: 18px;
+		background: rgba(58, 58, 58, 1);
+		text-align: center;
+	}
+	.footer h4 {
+		padding: 38px 0 23px;
+		font-size: 16px;
+		font-weight: 400;
+		color: rgba(255, 255, 255, 1);
+	}
+	.footer ul {
+		display: inline-block;
+	}
+	.footer li {
+		float: left;
+		font-size: 14px;
+		font-weight: 400;
+		color: rgba(255, 255, 255, 1);
+		padding: 0 12px;
+		border-right: 2px solid rgba(255, 255, 255, 1);
+	}
+	.footer li.last {
+		border: none;
+	}
+	.footer p {
+		font-size: 14px;
+		font-weight: 400;
+		color: rgba(255, 255, 255, 1);
+		margin-top: 65px;
+	}
+	.returnTop {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		position: fixed;
+		right: 0.75rem;
+		bottom: 10%;
+		background: url(photo/8653452904e2960f);
+		text-align: center;
+		line-height: 60px;
+	}
+	.returnTop i {
+		color: #fff;
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+	#btn{
+		display:none;
+	}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="header-top">
+			<div class="container">
+				<ul class="header__info fr">
+					<li><button onclick="to()">攻略</button></li>
+					<li>登陆/注册</li>
+					<li class="iphone">移动客户端</li>
+					<li class="weixin">微信</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container header-bottom clear">
+			<img src="photo/640-1-2.jpg" alt="logo图" class="logo fl" />
+			<ul class="nav fl clear">
+				<li class="first"><a href="#">首页</a></li>
+				<li><a href="#">上海简介</a></li>
+				<li><a href="#">旅游景点</a></li>
+				<li><a href="#">特色美食</a></li>
+				<li class="last"><a href="#">交通路线</a></li>
+			</ul>
+			<form class="form clear fr">
+				<input type="text" placeholder="输入你需要的" class="search" />
+				<input type="button" class="submit" />
+			</form>
+		</div>
+	</div>
+	<div class="banner">
+		<div id="box">
+			<div id="con">
+				<img src="photo/QQ图片20201216143345.jpg" alt="">
+				<img src="photo/QQ图片20201216143257.jpg" alt="">
+				<img src="photo/QQ图片20201216143329.jpg" alt="">
+				<img src="photo/QQ图片20201216143338.jpg" alt="">
+			</div>
+		</div>
+		<div id="btnL"></div>
+		<div id="btnR"></div>
+		<ul id="num">
+			<li class="select">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<img src="photo/prev.png" alt="上一页" class="prev" />
+		<img src="photo/next.png" alt="下一页" class="next" />
+	</div>
+	<div class="container">
+		<h2 class="title">
+			旅行
+			<p class="small">初遇魔都</p>
+		</h2>
+	</div>
+	<div class="container clear product">
+		<ul class="product-big fl clear">
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154826.jpg" alt="" width="497" height="492" />
+				<div class="product-info">
+					<h3>由黄浦江-观景步道-万国建筑所构建的最美最长上海夜景观景区</h3>
+				</div>
+			</li>
+		</ul>
+		<ul class="product-small fr clear">
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154831.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>拥有“中华商业第一街”的美誉，欧式建筑，美轮美奂</h3>
+				</div>
+			</li>
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154856.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>百年历史的庙宇与园林，古色古香的美</h3>
+				</div>
+			</li>
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154822.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>一个时代的象征，夜幕下的外白渡桥更像是旧上海滩奢靡繁华的真实写照</h3>
+				</div>
+			</li>
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154838.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>上海的繁华中心</h3>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="container">
+		<h2 class="title">
+			美食
+			<p class="small">惊喜不断</p>
+		</h2>
+	</div>
+	<div class="advert"></div>
+	<div class="container clear product">
+		<ul class="product-small fl clear">
+			<li class="product-item">
+				<img src="photo/QQ图片20200614103021.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>排骨年糕</h3>
+				</div>
+			</li>
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154909.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>上海生煎</h3>
+				</div>
+			</li>
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154903.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>熏鱼</h3>
+				</div>
+			</li>
+			<li class="product-item">
+				<img src="photo/QQ图片20200614103016.jpg" alt="" width="342" height="242" />
+				<div class="product-info">
+					<h3>南翔小笼</h3>
+				</div>
+			</li>
+		</ul>
+		<ul class="product-big fr clear">
+			<li class="product-item">
+				<img src="photo/QQ图片20200613154906.jpg" alt="" width="497" height="492" />
+				<div class="product-info">
+					<h3>糖醋小排</h3>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="container">
+		<div class="member">会员</div>
+	</div>
+	<div class="server">
+		<div class="server-info">
+			<ul class="clear">
+				<li>
+					<img src="photo/info1.png" alt="" />
+					<p>私人定制</p>
+				</li>
+				<li>
+					<img src="photo/info2.png" alt="" />
+					<p>收藏</p>
+				</li>
+				<li>
+					<img src="photo/info3.png" alt="" />
+					<p>联系我们</p>
+				</li>
+				<li>
+					<img src="photo/info4.png" alt="" />
+					<p>特色礼物</p>
+				</li>
+				<li>
+					<img src="photo/info5.png" alt="" />
+					<p>旅行团活动</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<h4>俱乐部</h4>
+		<ul class="clear">
+			<li>优惠券</li>
+			<li>限时打折</li>
+			<li>拍卖</li>
+			<li>团购</li>
+			<li>积分兑换</li>
+			<li class="last">私人定制</li>
+		</ul>
+		<p>© 2020 上海旅行 版权所有，并保留所有权利。沪ICP备15027783号</p>
+	</div>
+	<div class="returnTop" id="btn">
+		<i class="aui-iconfont aui-icon-top"></i>
+	</div>
+</body>
+<script>
+    var box = document.getElementById('box');
+	var con = document.getElementById('con');
+	var imgs = con.getElementsByTagName('img');
+	var btnL = document.getElementById('btnL');
+	var btnR = document.getElementById('btnR');
+	var num = document.getElementById('num');
+	var lis = num.getElementsByTagName('li');
+	var timer1 = null, timer2 = null;
+	var imgw = imgs[0].clientWidth;
+	var x = 0;
+	function imgScroll() {
+		var start = box.scrollLeft;
+		var end = imgw*x;
+		var change = end-start;
+		var minstep = 0;
+		var maxstep = 30;
+		var stepLength = change/maxstep;
+		clearInterval(timer2);
+		timer2 = setInterval(function() {
+			minstep++;
+			if (minstep >= maxstep) {
+				clearInterval(timer2);
+			}
+			start += stepLength;
+			box.scrollLeft = start;
+		},20)    
+		for (var i = 0; i < lis.length; i++) {
+			lis[i].className = 'none';
+		}
+		lis[x].className = 'select';
+	}
+	function move() {
+		clearInterval(timer1);
+		timer1 = setInterval(function(){
+			x++;
+			if (x >= imgs.length) {
+				x = 0;
+			}
+			imgScroll();
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].className = 'none';
+				lis[x].className = 'select';
+			}
+		},3000);
+	}
+	move();
+	btnR.onclick = function(){
+		clearInterval(timer1);
+		x++;
+		if (x >= imgs.length) {
+			x = 0;
+		}
+		imgScroll();
+		move();
+	}
+	btnL.onclick = function(){
+		clearInterval(timer1);
+		x--;
+		if (x < 0) {
+			x = imgs.length - 1;
+		}
+		imgScroll();
+		move();
+	}
+	for (var i = 0; i < lis.length; i++) {
+		lis[i].index = i;
+		lis[i].onclick = function(){
+			x = this.index;
+			imgScroll();
+			move();
+		}
+	}
+
+	var timer;
+	function to() {
+		timer = setTimeout(function() {
+			open('http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10099.html');
+		},1000);
+	}
+
+	var date1 = new Date();
+	var year = date1.getFullYear();
+	var month = date1.getMonth() + 1;
+	var date = date1.getDate();
+	var day = date1.getDay();
+	var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+	var str = "今天是" + year + "-" + month + "-" + date + "^" + weeks[day];
+	document.write(str);
+
+	var obtn = document.getElementById('btn');
+	var timer = null;
+	var isTop = true;
+	var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+	window.onscroll = function(){
+		var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+		if (osTop == 0) {
+			obtn.style.display = 'none';
+		}else{
+			obtn.style.display = 'block';
+		}
+		if (!isTop) {
+			clearInterval(timer);
+		}
+		isTop = false;
+	};
+	btn.onclick = function(){
+		timer = setInterval(function(){
+			var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var isSpeed = Math.floor(-osTop / 6);
+			document.documentElement.scrollTop = document.body.scrollTop = osTop + isSpeed;
+			isTop = true;
+			if (osTop == 0) {
+				clearInterval(timer);
+			}
+		},30);  
+	};
+</script>
+</html>
